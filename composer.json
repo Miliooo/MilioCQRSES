@@ -1,0 +1,25 @@
+{
+    "name": "milio/CQRS",
+    "type": "library",
+    "description": "CQRS Event Sourcing classes",
+    "keywords": ["cqrs", "event sourcing"],
+    "homepage": "https://github.com/Miliooo/MilioUser",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michiel Boeckaert",
+            "email": "Boeckaert@gmail.com"
+        }
+    ],
+    "require": {
+        "broadway/broadway": "0.2.*@dev"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Milio\\CQRS\\": "src"
+        }
+    }
+}
