@@ -38,6 +38,7 @@ class DoctrineORMRepository implements RepositoryInterface
     {
         $this->entityManager = $entityManager;
         $this->repository = $entityManager->getRepository($class);
+        $this->aggregateId = $aggregateId;
     }
 
     /**
