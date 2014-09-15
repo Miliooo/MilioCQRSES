@@ -13,7 +13,7 @@
     ],
     "require": {
         "broadway/broadway": "0.2.*@dev",
-        "broadway/uuid-generator": "0.1.*@dev"
+        "broadway/uuid-generator": "0.1.*"
     },
     "autoload": {
         "psr-4": {
