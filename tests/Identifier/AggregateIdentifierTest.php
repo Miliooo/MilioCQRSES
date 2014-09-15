@@ -51,7 +51,7 @@ class AggregateIdentifierTest extends AggregateIdentifierTestCase
     /**
      * @return AggregateIdentifier
      */
-    public function getAggregate()
+    public function getAggregateIdentifier()
     {
         return new TestIdentifier('foo');
     }
