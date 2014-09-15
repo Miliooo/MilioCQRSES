@@ -1,5 +1,5 @@
 {
-    "name": "milio/CQRSES",
+    "name": "milio/cqrs-es",
     "type": "library",
     "description": "CQRS Event Sourcing classes, some extra functionality on top of broadway",
     "keywords": ["cqrs", "event sourcing"],
