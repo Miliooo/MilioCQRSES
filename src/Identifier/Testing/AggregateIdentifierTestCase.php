@@ -16,10 +16,10 @@ abstract class AggregateIdentifierTestCase extends \PHPUnit_Framework_TestCase
      */
     public function testInterface()
     {
-        $this->assertInstanceOf('Milio\CQRS\Identifier\AggregateIdentifier', $this->getAggregate());
+        $this->assertInstanceOf('Milio\CQRS\Identifier\AggregateIdentifier', $this->getAggregateIdentifier());
     }
     /**
      * @return AggregateIdentifier
      */
-    abstract public function getAggregate();
+    abstract public function getAggregateIdentifier();
 }
