@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "409fe01b775c6bf9c0c335b6c7d15705",
+    "hash": "89918950b0e9b9893098c3de44706a31",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -132,6 +132,39 @@
                 "event sourcing"
             ],
             "time": "2014-09-12 07:33:03"
+        },
+        {
+            "name": "broadway/uuid-generator",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/qandidate-labs/broadway-uuid-generator.git",
+                "reference": "58380b723c671807131fe9ac0ff077f162be47bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/qandidate-labs/broadway-uuid-generator/zipball/58380b723c671807131fe9ac0ff077f162be47bb",
+                "reference": "58380b723c671807131fe9ac0ff077f162be47bb",
+                "shasum": ""
+            },
+            "require-dev": {
+                "rhumsaa/uuid": "~2.4"
+            },
+            "suggest": {
+                "rhumsaa/uuid": "Allows creating UUIDs"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Broadway\\UuidGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "UUID generator for broadway/broadway.",
+            "time": "2014-09-12 14:14:07"
         },
         {
             "name": "rhumsaa/uuid",

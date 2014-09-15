@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "broadway/broadway": "0.2.*@dev"
+        "broadway/broadway": "0.2.*@dev",
+        "broadway/uuid-generator": "0.1.0"
     },
     "require-dev": {
         "satooshi/php-coveralls": "dev-master"
