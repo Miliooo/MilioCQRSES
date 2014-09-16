@@ -7,25 +7,20 @@ use Broadway\ReadModel\RepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class DoctrineORMRepositoryFactory
- *
- * @author Michiel Boeckaert <boeckaert@gmail.com>
+ * Creates Doctrine ORM repositories.
  */
 class DoctrineORMRepositoryFactory implements RepositoryFactoryInterface
 {
     private $entityManager;
 
-    /**
-     * @param EntityManagerInterface $entityManager
-     */
     public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
     /**
-     * @param string $name  name of your unique id field. (example 'id' or 'userId')
-     * @param string $class FQCN of the model as managed by doctrine
+     * @param string $name  Name of your aggregate identifier field. (example 'id','userId')
+     * @param string $class FQCN of the model managed by doctrine
      *
      * @return RepositoryInterface
      */

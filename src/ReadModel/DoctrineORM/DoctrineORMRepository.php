@@ -4,62 +4,48 @@ namespace Milio\CQRS\ReadModel\DoctrineORM;
 
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\ReadModel\RepositoryInterface;
-use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class DoctrineORMRepository
- *
- * @author Michiel Boeckaert <boeckaert@gmail.com>
+ * Repository implementation using DoctrineORM.
  */
 class DoctrineORMRepository implements RepositoryInterface
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $entityManager;
+    private $entityManager;
+    private $repository;
+    private $identifierName;
 
     /**
-     * @var ObjectRepository
+     * @param EntityManagerInterface $entityManager  An entity manager instance
+     * @param string                 $class          FQCN of the class managed by doctrine
+     * @param string                 $identifierName Name of your identifier (eg id, userId)
      */
-    protected $repository;
-
-    /**
-     * @var string
-     */
-    protected $aggregateId;
-
-    /**
-     * @param EntityManagerInterface $entityManager
-     * @param string                 $class
-     * @param string                 $aggregateId
-     */
-    public function __construct(EntityManagerInterface $entityManager, $class, $aggregateId)
+    public function __construct(EntityManagerInterface $entityManager, $class, $identifierName)
     {
         $this->entityManager = $entityManager;
         $this->repository = $entityManager->getRepository($class);
-        $this->aggregateId = $aggregateId;
+        $this->identifierName = $identifierName;
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
-    public function save(ReadModelInterface $data)
+    public function save(ReadModelInterface $data, $flush=true)
     {
         $this->entityManager->persist($data);
         $this->entityManager->flush();
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function find($id)
     {
-        return $this->repository->findOneBy([$this->aggregateId => $id]);
+        return $this->repository->findOneBy(array($this->identifierName => $id));
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function findBy(array $fields)
     {
@@ -67,7 +53,7 @@ class DoctrineORMRepository implements RepositoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function findAll()
     {
@@ -75,12 +61,15 @@ class DoctrineORMRepository implements RepositoryInterface
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function remove($id)
     {
-        $data = $this->find($id);
-        $this->entityManager->remove($data);
+        $model = $this->find($id);
+        if ($model === null) {
+            return;
+        }
+        $this->entityManager->remove($model);
         $this->entityManager->flush();
     }
 }
