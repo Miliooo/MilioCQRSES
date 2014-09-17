@@ -33,7 +33,7 @@ class DoctrineORMRepository implements RepositoryInterface
     public function save(ReadModelInterface $data, $flush=true)
     {
         $this->entityManager->persist($data);
-        $this->entityManager->flush();
+        $this->entityManager->flush($data);
     }
 
     /**
@@ -70,6 +70,6 @@ class DoctrineORMRepository implements RepositoryInterface
             return;
         }
         $this->entityManager->remove($model);
-        $this->entityManager->flush();
+        $this->entityManager->flush($model);
     }
 }
