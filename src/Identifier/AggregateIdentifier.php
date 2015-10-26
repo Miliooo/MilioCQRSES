@@ -19,6 +19,10 @@ abstract class AggregateIdentifier
      */
     final public function __construct($identifier)
     {
+        if (!is_string($identifier)) {
+            throw new \InvalidArgumentException('expected string');
+        }
+        
         $this->identifier = $identifier;
     }
 
