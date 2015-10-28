@@ -28,6 +28,8 @@ class MilioInMemoryRepository implements ReadModelRepositoryInterface
         if (empty($result)) {
            throw new NotFoundReadModelException();
         }
+
+        return $result;
     }
 
     /**
