@@ -3,13 +3,13 @@
 namespace Milio\CQRS\ReadModel\DoctrineORM;
 
 use Broadway\ReadModel\ReadModelInterface;
-use Broadway\ReadModel\RepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Milio\CQRS\ReadModel\ReadModelRepositoryInterface;
 
 /**
  * Repository implementation using DoctrineORM.
  */
-class DoctrineORMRepository implements RepositoryInterface
+class DoctrineORMRepository implements ReadModelRepositoryInterface
 {
     private $entityManager;
     private $repository;
@@ -50,6 +50,11 @@ class DoctrineORMRepository implements RepositoryInterface
     public function findBy(array $fields)
     {
         return $this->repository->findBy($fields);
+    }
+
+    public function findOneBy(array $fields)
+    {
+        return $this->repository->findOneBy($fields);
     }
 
     /**

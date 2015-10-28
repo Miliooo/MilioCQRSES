@@ -7,7 +7,7 @@ use Broadway\CommandHandling\CommandHandler;
 /**
  * MilioCommandHandler
  *
- * This name makes it easier to find the command handler, it's hard to call it more specific.
+ * This implementation throws an exception when no handle method is found.
  *
  * @author Michiel Boeckaert <boeckaert@gmail.com>
  */

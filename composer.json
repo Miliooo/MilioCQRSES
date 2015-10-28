@@ -14,7 +14,7 @@
     "require": {
         "broadway/broadway": "0.8.*",
         "broadway/uuid-generator": "0.1.*",
-        "doctrine/orm": "~2.4"
+        "doctrine/orm": "^2.4"
     },
     "autoload": {
         "psr-4": {
