@@ -4,6 +4,7 @@ namespace Milio\CQRS\ReadModel\DoctrineORM;
 
 use Broadway\ReadModel\ReadModelInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Milio\CQRS\Readmodel\Exception\NotFoundReadModelException;
 use Milio\CQRS\ReadModel\ReadModelRepositoryInterface;
 
 /**
@@ -14,6 +15,7 @@ class DoctrineORMRepository implements ReadModelRepositoryInterface
     private $entityManager;
     private $repository;
     private $identifierName;
+    private $class;
 
     /**
      * @param EntityManagerInterface $entityManager  An entity manager instance
@@ -22,6 +24,7 @@ class DoctrineORMRepository implements ReadModelRepositoryInterface
      */
     public function __construct(EntityManagerInterface $entityManager, $class, $identifierName)
     {
+        $this->class = $class;
         $this->entityManager = $entityManager;
         $this->repository = $entityManager->getRepository($class);
         $this->identifierName = $identifierName;
@@ -76,5 +79,16 @@ class DoctrineORMRepository implements ReadModelRepositoryInterface
         }
         $this->entityManager->remove($model);
         $this->entityManager->flush($model);
+    }
+
+    public function findOrFail($id)
+    {
+        $result = $this->find($id);
+
+        if (null === $result) {
+            throw new NotFoundReadModelException('no result for id '.$id.' and class '.$this->class);
+        }
+
+        return $result;
     }
 }
