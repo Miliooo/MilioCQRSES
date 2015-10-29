@@ -2,16 +2,16 @@
 
 namespace Milio\CQRS\ReadModel\InMemory;
 
-use Broadway\ReadModel\InMemory\InMemoryRepository;
 use Broadway\ReadModel\ReadModelInterface;
-use Milio\CQRS\Readmodel\Exception\NotFoundReadModelException;
+use Broadway\ReadModel\RepositoryInterface;
+use Milio\CQRS\ReadModel\Exception\NotFoundReadModelException;
 use Milio\CQRS\ReadModel\ReadModelRepositoryInterface;
 
 class MilioInMemoryRepository implements ReadModelRepositoryInterface
 {
     private $repository;
 
-    public function __construct(InMemoryRepository $repository)
+    public function __construct(RepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -25,8 +25,9 @@ class MilioInMemoryRepository implements ReadModelRepositoryInterface
     public function findOrFail($id)
     {
         $result = $this->repository->find($id);
-        if (empty($result)) {
-           throw new NotFoundReadModelException();
+
+        if (null == $result) {
+            throw new NotFoundReadModelException();
         }
 
         return $result;

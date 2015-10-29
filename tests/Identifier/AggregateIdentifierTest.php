@@ -1,8 +1,9 @@
 <?php
 
-namespace Milio\CQRS\Identifier;
+namespace Milio\CQRS\Tests\Identifier;
 
 use Milio\CQRS\Identifier\Testing\AggregateIdentifierTestCase;
+use Milio\CQRS\Identifier\AggregateIdentifier;
 
 class AggregateIdentifierTest extends AggregateIdentifierTestCase
 {
@@ -12,7 +13,7 @@ class AggregateIdentifierTest extends AggregateIdentifierTestCase
     public function generate_returns_an_object()
     {
         $test = TestIdentifier::generate();
-        $this->assertInstanceof('Milio\CQRS\Identifier\TestIdentifier', $test);
+        $this->assertInstanceof('Milio\CQRS\Tests\Identifier\TestIdentifier', $test);
     }
 
     /**
@@ -43,7 +44,7 @@ class AggregateIdentifierTest extends AggregateIdentifierTestCase
     public function it_takes_a_string_as_constructor_argument()
     {
         $test = new TestIdentifier('foo');
-        $this->assertInstanceof('Milio\CQRS\Identifier\TestIdentifier', $test);
+        $this->assertInstanceof('Milio\CQRS\Tests\Identifier\TestIdentifier', $test);
         $this->assertEquals('foo', (string) $test);
         $this->assertEquals('foo', $test->getIdentifierString());
     }
