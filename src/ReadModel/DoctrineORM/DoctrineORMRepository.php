@@ -83,6 +83,10 @@ class DoctrineORMRepository implements ReadModelRepositoryInterface
 
     public function findOrFail($id)
     {
+        if  (!is_string($id)) {
+            throw new \InvalidArgumentException('expected string');
+        }
+
         $result = $this->find($id);
 
         if (null === $result) {
