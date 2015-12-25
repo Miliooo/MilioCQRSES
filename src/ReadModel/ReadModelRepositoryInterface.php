@@ -4,7 +4,7 @@ namespace Milio\CQRS\ReadModel;
 
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\ReadModel\RepositoryInterface;
-use Milio\CQRS\Readmodel\Exception\NotFoundReadModelException;
+use Milio\CQRS\Readmodel\Exceptions\NotFoundReadModelException;
 
 interface ReadModelRepositoryInterface extends RepositoryInterface
 {

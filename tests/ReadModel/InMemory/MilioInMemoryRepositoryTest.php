@@ -27,7 +27,7 @@ class MilioInMemoryRepositoryTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \Milio\CQRS\ReadModel\Exception\NotFoundReadModelException
+     * @expectedException \Milio\CQRS\ReadModel\Exceptions\NotFoundReadModelException
      */
     public function find_or_fail_throws_exception_when_no_result()
     {

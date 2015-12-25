@@ -4,7 +4,7 @@ namespace Milio\CQRS\ReadModel\DoctrineORM;
 
 use Broadway\ReadModel\ReadModelInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Milio\CQRS\Readmodel\Exception\NotFoundReadModelException;
+use Milio\CQRS\Readmodel\Exceptions\NotFoundReadModelException;
 use Milio\CQRS\ReadModel\ReadModelRepositoryInterface;
 
 /**
