@@ -24,4 +24,6 @@ interface ReadModelRepositoryInterface extends RepositoryInterface
      * @return ReadModelInterface|null
      */
     public function findOneBy(array $fields);
+
+
 }
