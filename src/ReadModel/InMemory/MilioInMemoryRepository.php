@@ -17,10 +17,7 @@ class MilioInMemoryRepository implements ReadModelRepositoryInterface
     }
 
     /**
-     * @param $id
-     * @return ReadModelInterface
-     *
-     * @throws NotFoundReadModelException when read model was not found
+     * {@inheritdoc}
      */
     public function findOrFail($id)
     {
@@ -34,11 +31,7 @@ class MilioInMemoryRepository implements ReadModelRepositoryInterface
     }
 
     /**
-     * Finds a single read model by a set of criteria.
-     *
-     * @param array $fields
-     *
-     * @return ReadModelInterface|null
+     * {@inheritdoc}
      */
     public function findOneBy(array $fields)
     {
@@ -57,9 +50,7 @@ class MilioInMemoryRepository implements ReadModelRepositoryInterface
     }
 
     /**
-     * @param string $id
-     *
-     * @return ReadModelInterface|null
+     * {@inheritdoc}
      */
     public function find($id)
     {
@@ -67,9 +58,7 @@ class MilioInMemoryRepository implements ReadModelRepositoryInterface
     }
 
     /**
-     * @param array $fields
-     *
-     * @return ReadModelInterface[]
+     * {@inheritdoc}
      */
     public function findBy(array $fields)
     {
@@ -77,7 +66,7 @@ class MilioInMemoryRepository implements ReadModelRepositoryInterface
     }
 
     /**
-     * @return ReadModelInterface[]
+     * {@inheritdoc}
      */
     public function findAll()
     {
@@ -85,10 +74,20 @@ class MilioInMemoryRepository implements ReadModelRepositoryInterface
     }
 
     /**
-     * @param string $id
+     * {@inheritdoc}
      */
     public function remove($id)
     {
         return $this->repository->remove($id);
+    }
+
+    /**
+     * This is not supported, since the read model projectors should not use this.
+     *
+     * It's used when outputting read models in the backend. Maybe it should be part of another interface.
+     */
+    public function findByCriteria(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    {
+        return new \InvalidArgumentException('in memory repository does not implement this');
     }
 }
