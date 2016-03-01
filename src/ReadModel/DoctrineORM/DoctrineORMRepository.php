@@ -55,6 +55,11 @@ class DoctrineORMRepository implements ReadModelRepositoryInterface
         return $this->repository->findBy($fields);
     }
 
+    public function findByCriteria(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    {
+        return $this->repository->findby($criteria, $orderBy, $limit, $offset);
+    }
+
     public function findOneBy(array $fields)
     {
         return $this->repository->findOneBy($fields);
