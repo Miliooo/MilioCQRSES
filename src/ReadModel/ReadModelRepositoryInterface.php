@@ -4,7 +4,7 @@ namespace Milio\CQRS\ReadModel;
 
 use Broadway\ReadModel\ReadModelInterface;
 use Broadway\ReadModel\RepositoryInterface;
-use Milio\CQRS\Readmodel\Exceptions\NotFoundReadModelException;
+use Milio\CQRS\ReadModel\ErrorHandling\NotFoundReadModelException;
 
 interface ReadModelRepositoryInterface extends RepositoryInterface
 {
@@ -25,5 +25,5 @@ interface ReadModelRepositoryInterface extends RepositoryInterface
      */
     public function findOneBy(array $fields);
 
-
+    public function findByCriteria(array $criteria, array $orderBy = null, $limit = null, $offset = null);
 }

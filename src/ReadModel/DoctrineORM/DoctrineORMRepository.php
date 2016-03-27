@@ -4,7 +4,7 @@ namespace Milio\CQRS\ReadModel\DoctrineORM;
 
 use Broadway\ReadModel\ReadModelInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use Milio\CQRS\Readmodel\Exceptions\NotFoundReadModelException;
+use Milio\CQRS\ReadModel\ErrorHandling\NotFoundReadModelException;
 use Milio\CQRS\ReadModel\ReadModelRepositoryInterface;
 
 /**
@@ -55,9 +55,16 @@ class DoctrineORMRepository implements ReadModelRepositoryInterface
         return $this->repository->findBy($fields);
     }
 
+    /**
+     * @param array $criteria
+     * @param array|null $orderBy
+     * @param int $limit
+     * @param int $offset
+     * @return array
+     */
     public function findByCriteria(array $criteria, array $orderBy = null, $limit = null, $offset = null)
     {
-        return $this->repository->findby($criteria, $orderBy, $limit, $offset);
+        return $this->repository->findBy($criteria, $orderBy, $limit, $offset);
     }
 
     public function findOneBy(array $fields)
